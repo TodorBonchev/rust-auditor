@@ -2,8 +2,7 @@
 
 A security agent for Solana programs written in Rust - findings in minutes, not weeks.
 
-Covers Anchor, native `solana-program` and Pinocchio programs. It runs the same engine as the
-[solidity-auditor](../solidity-auditor/) - 12 parallel attacker agents, dedup, a four-gate judge,
+Covers Anchor, native `solana-program` and Pinocchio programs. It runs a multi-agent engine - 12 parallel attacker agents, dedup, a four-gate judge,
 loop mode and a findings memory - with every agent rewritten for the Solana account model.
 
 Two things are specific to Solana:

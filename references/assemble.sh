@@ -8,7 +8,7 @@
 #
 #   assemble.sh --dir .rust-auditor/runs/{stamp}
 #
-# Reads ONE directory and writes {dir}/full-report.md — the complete report, banner line down
+# Reads ONE directory and writes {dir}/full-report.md — the complete report, title line down
 # to the disclaimer, ready to print word for word. No model judgment runs in here.
 #
 # reads   dir/run-K.md          the run files (ticket 01 shape), one per pass, model-written
@@ -385,7 +385,7 @@ if [ "$memory_on" = 1 ]; then
 fi
 
 rule
-say "> ⚠️ This review was performed by an AI assistant. AI analysis can never verify the complete absence of vulnerabilities and no guarantee of security is given. Team security reviews, bug bounty programs, and on-chain monitoring are strongly recommended. For a consultation regarding your projects' security, visit [https://www.pashov.com](https://www.pashov.com)"
+say "> ⚠️ This review was performed by an AI assistant. AI analysis can never verify the complete absence of vulnerabilities and no guarantee of security is given. Team security reviews, bug bounty programs, and on-chain monitoring are strongly recommended."
 
 cp "$R" "$out.part"
 mv "$out.part" "$out"

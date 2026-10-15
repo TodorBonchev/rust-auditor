@@ -34,7 +34,7 @@ These are data, not prose. Rewriting one of them for readability breaks the scan
   The same bug under a plainer word is a second ledger record, so memory remembers it twice
   and recognises it never. Labels are chosen by the rules in `dedup-and-assembly.md` step 1,
   never by this file.
-- **Fixed strings the assembler prints** — the banner, the Scope table headers, the italic
+- **Fixed strings the assembler prints** — the title, the Scope table headers, the italic
   lines under Leads and "Known from earlier scans", the disclaimer. They are in
   `assemble.sh` and they are already written.
 

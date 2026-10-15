@@ -330,7 +330,7 @@ The `poc=` attribute is read by `assemble.sh` and printed on the report meta lin
    bash {resolved_path}/assemble.sh --dir .rust-auditor/runs/{stamp}
    ```
 
-   It writes `.rust-auditor/runs/{stamp}/full-report.md` — the whole report, banner line down to the disclaimer, ready to print word for word. It writes to a `.part` file and moves it into place, so a half-report never exists.
+   It writes `.rust-auditor/runs/{stamp}/full-report.md` — the whole report, title line down to the disclaimer, ready to print word for word. It writes to a `.part` file and moves it into place, so a half-report never exists.
 
    **This is the only producer of a report in this skill.** Do not re-word its output, do not re-order it, do not add to it and do not summarise it in your own words. Do not re-read source to "verify the most critical claim" either — the agents did that and the gate filtered it; re-verification costs about five minutes and rarely changes a verdict.
 
@@ -389,7 +389,7 @@ The `poc=` attribute is read by `assemble.sh` and printed on the report meta lin
    > ⚠️ {the disclaimer line from full-report.md, copied unchanged}
    ````
 
-   - **`{path}`** — `.rust-auditor/runs/{stamp}/full-report.md`, or, when `--file-output` was passed, the **copy** and only the copy: `{project-name}-pashov-ai-audit-report-{stamp}.md`. Never both. Two paths to identical bytes answers a question the runner did not ask at the moment they want one filename. This line is the only part of the block a flag changes.
+   - **`{path}`** — `.rust-auditor/runs/{stamp}/full-report.md`, or, when `--file-output` was passed, the **copy** and only the copy: `{project-name}-rust-auditor-report-{stamp}.md`. Never both. Two paths to identical bytes answers a question the runner did not ask at the moment they want one filename. This line is the only part of the block a flag changes.
    - **The Scope table's `Files reviewed` row is copied unchanged**, full paths and all. It is the one row that proves *which* `lib.rs` was read — every Anchor program has one, and a terminal that shortens it can no longer be diffed against the file it claims to summarise.
    - **No counts summary.** The `{F} findings, {L} leads` line and the `100-90 / 89-75 / below 75` split are **not** printed. `top 3 of {F}` already carries the only total a reader needs at this moment, and the bucket split answered a question nobody asked while standing between them and the path.
 
@@ -431,7 +431,7 @@ The `poc=` attribute is read by `assemble.sh` and printed on the report meta lin
 4. **`--file-output` — copy the assembled file.** Only when the flag was passed:
 
    ```bash
-   cp .rust-auditor/runs/{stamp}/full-report.md "{project-name}-pashov-ai-audit-report-{stamp}.md"
+   cp .rust-auditor/runs/{stamp}/full-report.md "{project-name}-rust-auditor-report-{stamp}.md"
    ```
 
    A copy, not a second build. **Nothing regenerates**, so the flag cannot collapse the report the way the terminal once did — the file and the terminal are the same bytes by construction, whatever the finding count. The run files stay in `.rust-auditor/runs/` and are never copied into the working directory.

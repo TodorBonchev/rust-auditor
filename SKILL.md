@@ -82,7 +82,7 @@ The pass count the scan runs is `{passes}` — settled in Turn 1b, 1 or more. Th
 
 ## Orchestration
 
-**Turn 1 — Discover.** Print the banner, then make these parallel tool calls in one message:
+**Turn 1 — Discover.** Make these parallel tool calls in one message:
 
 a. Bash `find` for in-scope `.rs` files per mode selection
 b. Glob for `**/references/hacking-agents/account-validation-agent.md` — extract the `references/` directory (two levels up) as `{resolved_path}`. Glob for **this** file and not `shared-rules.md`: the solidity-auditor ships a `shared-rules.md` at the same relative path, and with both skills installed a glob for it returns two directories. `account-validation-agent.md` exists only in this skill.
@@ -543,19 +543,3 @@ Then, after the loop body has run `{passes}` times (or stopped early), go to Tur
 **This turn holds no model judgment.** It copies two files, runs `assemble.sh`, counts with `awk`, and prints. `assemble.sh` is the only producer of a report in this skill: do not re-word its output, do not re-order it, do not add to it and do not summarise it in your own words. If this turn looks too thin to be a reporting step — that is the point, and `dedup-and-assembly.md` records why.
 
 Follow `{resolved_path}/dedup-and-assembly.md`, section **"Turn 5"**, step by step. Its step 1 is SKIPPED when memory is off; its step 4 runs only when `--file-output` was passed.
-
-## Banner
-
-Before doing anything else, print this exactly:
-
-```
-
-██████╗  █████╗ ███████╗██╗  ██╗ ██████╗ ██╗   ██╗     ███████╗██╗  ██╗██╗██╗     ██╗     ███████╗
-██╔══██╗██╔══██╗██╔════╝██║  ██║██╔═══██╗██║   ██║     ██╔════╝██║ ██╔╝██║██║     ██║     ██╔════╝
-██████╔╝███████║███████╗███████║██║   ██║██║   ██║     ███████╗█████╔╝ ██║██║     ██║     ███████╗
-██╔═══╝ ██╔══██║╚════██║██╔══██║██║   ██║╚██╗ ██╔╝     ╚════██║██╔═██╗ ██║██║     ██║     ╚════██║
-██║     ██║  ██║███████║██║  ██║╚██████╔╝ ╚████╔╝      ███████║██║  ██╗██║███████╗███████╗███████║
-╚═╝     ╚═╝  ╚═╝╚══════╝╚═╝  ╚═╝ ╚═════╝   ╚═══╝       ╚══════╝╚═╝  ╚═╝╚═╝╚══════╝╚══════╝╚══════╝
-                                   rust-auditor · Solana programs
-
-```

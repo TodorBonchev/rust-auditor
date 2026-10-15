@@ -17,7 +17,7 @@ Nothing composes a report from this template any more. There are two readers:
   block. Those bytes are pasted straight through into the report, so they are written in the
   report's own shape while the pass still has context to spare.
 - **`references/assemble.sh`** — the assembler. Everything below the finding block — the
-  banner, the Scope table, the ordering, the Findings List, the Leads section, "Known from
+  title, the Scope table, the ordering, the Findings List, the Leads section, "Known from
   earlier scans", the disclaimer — is what the assembler emits.
 
 **This file settles the shape. `report-language.md` settles the words.** Every sentence a
@@ -34,11 +34,11 @@ is the thing that failed; the step that must not lose a finding holds no model j
 ## Report Path
 
 **Every scan assembles `.rust-auditor/runs/{stamp}/full-report.md`** — the whole report,
-banner line down to the disclaimer — at any pass count, with or without flags. That file is
+title line down to the disclaimer — at any pass count, with or without flags. That file is
 the report. There is exactly one producer of it, and it is the assembler.
 
 `--file-output` makes a **copy** of that file into the current working directory as
-`{project-name}-pashov-ai-audit-report-{stamp}.md`, where `{project-name}` is the repo root
+`{project-name}-rust-auditor-report-{stamp}.md`, where `{project-name}` is the repo root
 basename and `{stamp}` is `YYYYMMDD-HHMMSS` at scan time. A copy, not a second build —
 nothing regenerates, so the flag cannot collapse the report the way the terminal once did. The
 flag never causes a report to be produced; it only decides whether a copy lands where the
@@ -156,7 +156,7 @@ _Recorded by earlier scans of this repo, not raised again by this one. Not re-ch
 
 ---
 
-> ⚠️ This review was performed by an AI assistant. AI analysis can never verify the complete absence of vulnerabilities and no guarantee of security is given. Team security reviews, bug bounty programs, and on-chain monitoring are strongly recommended. For a consultation regarding your projects' security, visit [https://www.pashov.com](https://www.pashov.com)
+> ⚠️ This review was performed by an AI assistant. AI analysis can never verify the complete absence of vulnerabilities and no guarantee of security is given. Team security reviews, bug bounty programs, and on-chain monitoring are strongly recommended.
 
 ````
 
@@ -211,7 +211,7 @@ are excluded from the trigger count**, so a scan with 18 findings and 40 leads p
 The trigger is on **size, not on flags**. A plain scan of a small program prints in full; a
 plain scan of a big one gets the short shape.
 
-**Above the trigger the terminal prints four things:** the banner, the Scope table unchanged,
+**Above the trigger the terminal prints four things:** the title, the Scope table unchanged,
 a **Findings List holding the top 3 findings**, and the path to the full report — then the
 disclaimer. About fifteen lines.
 
